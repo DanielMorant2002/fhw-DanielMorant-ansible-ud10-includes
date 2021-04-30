@@ -1,0 +1,16 @@
+---
+- name: Instalar Nginx
+  become: yes
+  hosts: webservers
+  tasks:
+    #- name: test
+      #debug:
+        #msg: "{{ env }}"
+
+    - include: env-preparation-playbook.yml
+    - include: nginx-playbook.yml
+    - include: deploy-playbook.yml
+
+  handlers:
+    - include: nginx-handler.yml
+...
